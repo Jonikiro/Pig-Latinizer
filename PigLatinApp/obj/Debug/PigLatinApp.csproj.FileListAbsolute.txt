@@ -1,0 +1,7 @@
+D:\C#\PigLatinApp\PigLatinApp\obj\Debug\PigLatinApp.csprojResolveAssemblyReference.cache
+D:\C#\PigLatinApp\PigLatinApp\obj\Debug\PigLatinApp.csproj.CoreCompileInputs.cache
+D:\C#\PigLatinApp\PigLatinApp\bin\Debug\PigLatinApp.exe.config
+D:\C#\PigLatinApp\PigLatinApp\bin\Debug\PigLatinApp.exe
+D:\C#\PigLatinApp\PigLatinApp\bin\Debug\PigLatinApp.pdb
+D:\C#\PigLatinApp\PigLatinApp\obj\Debug\PigLatinApp.exe
+D:\C#\PigLatinApp\PigLatinApp\obj\Debug\PigLatinApp.pdb
