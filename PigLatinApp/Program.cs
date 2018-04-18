@@ -11,40 +11,42 @@ namespace PigLatinApp
     {
         static void Main(string[] args)
         {
-            while(true)
-            {
-                // Set up vowel array to check words against.
-                char[] vowels = new[] { 'a', 'e', 'i', 'o', 'u'};
-                string normalString;
+            // Sets up variables and vowel array to check words against.
+            char[] vowels = new[] { 'a', 'e', 'i', 'o', 'u' };
+            string normalString;
+            string[] words;
+            List<char> breakWord;
+            int count, i;
 
+            // Main loop
+            while (true)
+            {
                 // Requests user input for letter-only strings. Normalizes input.
                 do
                 {
                     Console.Clear();
                     Console.WriteLine("Play the Pig Latin Game! " +
-                        "\nEnter a sentence without special characters or numbers." +
-                        "\nLetters only, please: \n");
-                    normalString = Console.ReadLine();
-                    normalString = Regex.Replace(normalString, @"\s+", " ");
+                        "\nEnter a sentence WITHOUT special characters or numbers: ");
+                    normalString = Regex.Replace(Console.ReadLine().ToLower(), @"\s+", " ");
                     Console.WriteLine();
-                } while (!normalString.Any(ch => Char.IsLetter(ch)));
-
-                // Splits strings into individual words.
-                string[] words = normalString.Split(' ');
+                    words = normalString.Split(' ');
+                } while (!words.All(ch => Regex.IsMatch(ch, @"^[a-zA-Z]+$")));
 
                 // Runs a character-by-character breakdown on each word
                 foreach (string s in words)
                 {
-                    List<char> breakWord = s.ToList();
-
+                    breakWord = s.ToList();
+                    count = s.Length;
+                    i = 0;
                     // If not a vowel, takes first letter of word and appends it to the end.
                     // Also accounts for words that end in 'y'.
-                    while (!vowels.Contains(breakWord[0]))
+                    while (!vowels.Contains(breakWord[0]) && i < count)
                     {
                         breakWord.Add(breakWord[0]);
                         breakWord.RemoveAt(0);
                         if (breakWord[0] == 'y')
                             break;
+                        i++;
                     }
 
                     // Prints pig-latinized version of word.
@@ -53,9 +55,7 @@ namespace PigLatinApp
 
                 // Sets exit condition. Normalizes user input.
                 Console.Write("\n\nWould you like to try again? Type Y or N: ");
-                string choice = Console.ReadLine().ToLower();
-                choice = Regex.Replace(choice, @"\s+", " ");
-                if (choice == "n")
+                if (Regex.Replace(Console.ReadLine().ToLower(), @"\s+", " ") == "n")
                     break;
             }
 
